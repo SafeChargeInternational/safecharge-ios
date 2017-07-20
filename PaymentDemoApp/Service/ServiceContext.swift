@@ -14,6 +14,7 @@ class ServiceContext {
     @discardableResult required init(enviorment:ServiceEnviorment,
                   merchantId:String,
                   merchantSiteId:String,
+                  userToken:String,
                   clientRequestId:String,
                   secretKey:String) {
         ServiceContext.env = enviorment
@@ -27,6 +28,7 @@ class ServiceContext {
         ServiceContext.merchantSiteId = merchantSiteId
         ServiceContext.clientRequestId = clientRequestId
         ServiceContext.secretKey = secretKey
+        ServiceContext.userToken = userToken
     }
     
     public static var env:ServiceEnviorment? = nil
@@ -34,7 +36,10 @@ class ServiceContext {
     
     public static var merchantId:String? = nil
     public static var merchantSiteId:String? = nil
+    public static var userToken:String? = nil
     public static var clientRequestId:String? = nil
     public static var secretKey:String? = nil
+    
+ 
     
 }

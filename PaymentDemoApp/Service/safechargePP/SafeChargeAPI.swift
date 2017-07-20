@@ -53,7 +53,6 @@ struct SafeChargeAPI
     typealias tokenizeCallBack = (_ tempToken:String?, _ error:Error? ) -> Void
     static func tokenize(cardInfo:CardModel,completition:@escaping(tokenizeCallBack)) {
         let request = ServiceSession.sharedSession.request(SafeChargeRequest.tokenize(cardInfo: cardInfo))
-        debugPrint(request)
         request.responseObject { (response:DataResponse<CardTokenizationResponse>) in
             switch response.result {
             case .success:
