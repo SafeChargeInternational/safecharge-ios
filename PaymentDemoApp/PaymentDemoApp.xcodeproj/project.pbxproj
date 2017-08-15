@@ -26,7 +26,6 @@
 		331E5BDE1F14E85800D6BEA5 /* CardResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E5BDD1F14E85800D6BEA5 /* CardResponseModel.swift */; };
 		331E5BE11F14EECC00D6BEA5 /* StringSHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E5BE01F14EECC00D6BEA5 /* StringSHA256.swift */; };
 		331E5BE31F14EF1900D6BEA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331E5BE21F14EF1900D6BEA5 /* Security.framework */; };
-		331E5BE61F14F00300D6BEA5 /* NSData+AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 331E5BE51F14F00300D6BEA5 /* NSData+AESCrypt.m */; };
 		331E5BE91F14F8A200D6BEA5 /* DateToStringCompoments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E5BE81F14F8A200D6BEA5 /* DateToStringCompoments.swift */; };
 		331E5BEC1F1519E000D6BEA5 /* EnterCardSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E5BEB1F1519E000D6BEA5 /* EnterCardSubViewController.swift */; };
 		331E5BEE1F151A0700D6BEA5 /* EnterCardDetailsSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E5BED1F151A0700D6BEA5 /* EnterCardDetailsSubViewController.swift */; };
@@ -36,7 +35,6 @@
 		331E5BF81F15248C00D6BEA5 /* SharedViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E5BF71F15248C00D6BEA5 /* SharedViewContext.swift */; };
 		331E5BFA1F164FF900D6BEA5 /* UIViewControllerAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E5BF91F164FF900D6BEA5 /* UIViewControllerAlerts.swift */; };
 		331E5BFC1F165E9B00D6BEA5 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E5BFB1F165E9B00D6BEA5 /* StringUtils.swift */; };
-		337342E31F1668A600157A0E /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337342E21F1668A600157A0E /* ViewUtils.swift */; };
 		337342E51F1766FE00157A0E /* DetailsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337342E41F1766FE00157A0E /* DetailsTextField.swift */; };
 		337C75291F18DC71006145A0 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337C75281F18DC71006145A0 /* Math.swift */; };
 		337C752B1F1C9DE4006145A0 /* ServiceContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337C752A1F1C9DE4006145A0 /* ServiceContext.swift */; };
@@ -92,8 +90,6 @@
 		331E5BE01F14EECC00D6BEA5 /* StringSHA256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringSHA256.swift; path = Extensions/StringSHA256.swift; sourceTree = "<group>"; };
 		331E5BE21F14EF1900D6BEA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		331E5BE41F14F00300D6BEA5 /* PaymentDemoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentDemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		331E5BE51F14F00300D6BEA5 /* NSData+AESCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+AESCrypt.m"; path = "Extensions/NSData+AESCrypt.m"; sourceTree = "<group>"; };
-		331E5BE71F14F01F00D6BEA5 /* NSData+AESCrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSData+AESCrypt.h"; path = "Extensions/NSData+AESCrypt.h"; sourceTree = "<group>"; };
 		331E5BE81F14F8A200D6BEA5 /* DateToStringCompoments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateToStringCompoments.swift; path = Extensions/DateToStringCompoments.swift; sourceTree = "<group>"; };
 		331E5BEB1F1519E000D6BEA5 /* EnterCardSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnterCardSubViewController.swift; path = viewcontrollers/EnterCardSubViewController.swift; sourceTree = "<group>"; };
 		331E5BED1F151A0700D6BEA5 /* EnterCardDetailsSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnterCardDetailsSubViewController.swift; path = viewcontrollers/EnterCardDetailsSubViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +99,6 @@
 		331E5BF71F15248C00D6BEA5 /* SharedViewContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedViewContext.swift; sourceTree = "<group>"; };
 		331E5BF91F164FF900D6BEA5 /* UIViewControllerAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerAlerts.swift; path = Extensions/UIViewControllerAlerts.swift; sourceTree = "<group>"; };
 		331E5BFB1F165E9B00D6BEA5 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringUtils.swift; path = Utils/StringUtils.swift; sourceTree = "<group>"; };
-		337342E21F1668A600157A0E /* ViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewUtils.swift; path = Utils/ViewUtils.swift; sourceTree = "<group>"; };
 		337342E41F1766FE00157A0E /* DetailsTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsTextField.swift; path = Components/DetailsTextField.swift; sourceTree = "<group>"; };
 		337C75281F18DC71006145A0 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Math.swift; path = Extensions/Math.swift; sourceTree = "<group>"; };
 		337C752A1F1C9DE4006145A0 /* ServiceContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceContext.swift; path = Service/ServiceContext.swift; sourceTree = "<group>"; };
@@ -273,8 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				331E5BE01F14EECC00D6BEA5 /* StringSHA256.swift */,
-				331E5BE51F14F00300D6BEA5 /* NSData+AESCrypt.m */,
-				331E5BE71F14F01F00D6BEA5 /* NSData+AESCrypt.h */,
 				331E5BE41F14F00300D6BEA5 /* PaymentDemoApp-Bridging-Header.h */,
 				331E5BE81F14F8A200D6BEA5 /* DateToStringCompoments.swift */,
 				331E5BF91F164FF900D6BEA5 /* UIViewControllerAlerts.swift */,
@@ -300,7 +293,6 @@
 				337C752C1F1CA9E0006145A0 /* CreditCardValidator2.swift */,
 				331E5BF21F1520B600D6BEA5 /* CreditCardValidator.swift */,
 				331E5BFB1F165E9B00D6BEA5 /* StringUtils.swift */,
-				337342E21F1668A600157A0E /* ViewUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -604,7 +596,6 @@
 				337C75291F18DC71006145A0 /* Math.swift in Sources */,
 				331E5BCF1F13C3BC00D6BEA5 /* SafeChargeRequest.swift in Sources */,
 				331E5BE91F14F8A200D6BEA5 /* DateToStringCompoments.swift in Sources */,
-				337342E31F1668A600157A0E /* ViewUtils.swift in Sources */,
 				3314BC091F179DC900C4A459 /* OverlayView.swift in Sources */,
 				331E5BEC1F1519E000D6BEA5 /* EnterCardSubViewController.swift in Sources */,
 				331E5B9E1F13B3DD00D6BEA5 /* PaymentViewController.swift in Sources */,
@@ -614,7 +605,6 @@
 				331E5B9C1F13B3DD00D6BEA5 /* AppDelegate.swift in Sources */,
 				331E5BF61F15217200D6BEA5 /* CreditCardTextField.swift in Sources */,
 				331E5BFC1F165E9B00D6BEA5 /* StringUtils.swift in Sources */,
-				331E5BE61F14F00300D6BEA5 /* NSData+AESCrypt.m in Sources */,
 				331E5BFA1F164FF900D6BEA5 /* UIViewControllerAlerts.swift in Sources */,
 				331E5BF81F15248C00D6BEA5 /* SharedViewContext.swift in Sources */,
 				331E5BD71F13D0F700D6BEA5 /* ServiceResponseGeneric.swift in Sources */,

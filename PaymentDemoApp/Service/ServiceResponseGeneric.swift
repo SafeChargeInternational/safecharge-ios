@@ -20,8 +20,6 @@ enum BackendError: Error {
 protocol ResponseObjectSerializable {
     
     init?(representation:Any)
-    //init?(response: HTTPURLResponse, representation: Any)
-    
     func getError() -> Error?
 }
 

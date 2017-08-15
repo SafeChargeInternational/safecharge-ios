@@ -38,15 +38,12 @@ class CreditCardValidator2 {
         if parsed != nil {
             return parsed!
         } else {
-            print("invalid result produced from extractRangeFromString")
             return 0
         }
     }
     
     class func matchesRegex(regex: String!, text: String!) -> Bool {
         do {
-            print("--------match regex")
-            print(regex)
             let regex = try NSRegularExpression(pattern: regex, options: [.caseInsensitive])
             let nsString = text as NSString
             let match = regex.firstMatch(in: text, options: [], range: NSMakeRange(0, nsString.length))

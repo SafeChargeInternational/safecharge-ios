@@ -20,7 +20,9 @@ class PaymentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(PaymentViewController.checkAndUpdateButton), name: Notification.Name.init("updatePaymentButtonStatus"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PaymentViewController.checkAndUpdateButton),
+                                               name: Notification.Name.init("updatePaymentButtonStatus"),
+                                               object: nil)
         
         SharedViewContext.shared.sharedCardIcon = self.cardIconView
         self.payButton.isEnabled = false
@@ -50,7 +52,6 @@ class PaymentViewController: UIViewController {
         } else {
             self.payButton.isEnabled = true
         }
-        
     }
     
     @IBAction func onCamera(_ sender: Any) {
@@ -79,7 +80,9 @@ class PaymentViewController: UIViewController {
             ServiceContext.merchantId != nil &&
             ServiceContext.merchantSiteId != nil &&
             ServiceContext.secretKey != nil &&
-            ServiceContext.clientRequestId != nil else {
+            ServiceContext.clientRequestId != nil &&
+            ServiceContext.userToken != nil
+        else {
                 print("error - initialize the context")
                 return
         }
@@ -100,26 +103,39 @@ class PaymentViewController: UIViewController {
     }
     
     private func tokenizeAction(sessionToken:String) {
-        let cardData = ["cardNumber" : SharedViewContext.shared.ccardNumber,
-                        "cardHolderName" : "Sara Brawn",
-                        "expirationMonth" : SharedViewContext.shared.expirationMonth,
-                        "expirationYear" : SharedViewContext.shared.expirationYear,
-                        "CVV" : SharedViewContext.shared.cvv]
         
-        let billingAddress = ["firstName" : "Sara",
-                              "lastName" : "Brawn ",
-                              "address" : "stre1",
-                              "email":"testthat@mail.com",
-                              "phone" : "889214935",
-                              "city" : "Darnassus",
-                              "country" : "DE",
-                              "state":"CA",
-                              "zip" : "CA1234"]
+        guard
+            let ccardNumber = SharedViewContext.shared.ccardNumber ,
+            let cardHolderName = SharedViewContext.shared.cardHolderName ,
+            let expirationMonth = SharedViewContext.shared.expirationMonth ,
+            let expirationYear = SharedViewContext.shared.expirationYear ,
+            let CVV = SharedViewContext.shared.cvv
+        else {
+            print("invalid required data")
+            self.payButton.isEnabled = true
+            self.payActivity.stopAnimating()
+            self.showMessage("Invalid input data")
+            return
+        }
+        
+        let cardData = CardDataModel.init(cardNumber: ccardNumber,
+                                          cardHolderName: cardHolderName,
+                                          expirationMonth: expirationMonth,
+                                          expirationYear: expirationYear,
+                                          CVV: CVV)
+        
+        let billingAddress = BillingAddressModel.init(city: "Darnassus",
+                                                      country: "DE",
+                                                      zip: "CA1234",
+                                                      email: "testthat@mail.com",
+                                                      firstName: "Sara",
+                                                      lastName: "Brawn",
+                                                      state: "CA")
         
         
         let dict:[String:Any] = ["sessionToken":sessionToken,
-                                 "userTokenId":"Test_0065",
-                                 "merchantSiteId":"",
+                                 "userTokenId":ServiceContext.userToken!,
+                                 "merchantSiteId":ServiceContext.merchantSiteId!,
                                  "cardData": cardData,
                                  "billingAddress":billingAddress
         ]

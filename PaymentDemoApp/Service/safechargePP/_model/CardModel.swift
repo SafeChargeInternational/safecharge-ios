@@ -8,42 +8,6 @@
 
 import Foundation
 
-/*
- {
- "merchantSiteId":"1811",
- "environment":"test",
- "sessionToken":"3b2259be-192a-4ca9-832d-01d6a8a26577",
- "billingAddress":{
- "city":"Berlin",
- "country":"DE",
- "zip":"10021",
- "email":"janedoe@mail.com",
- "firstName":"Jane",
- "lastName":"Doe",
- "state":"None"
- },
- "cardData":{
- "cardNumber":"4111111111111111",
- "cardHolderName":"John Doe",
- "expirationMonth":"01",
- "expirationYear":"2020",
- "CVV":"123"
- }
- }
- */
-
-/*
-{
-    "ccTempToken":"9a58ab98-3f4e-40c6-ad5b-25ee85f3778e",
-    "sessionToken":"4861ec7e-0514-4af1-9a41-aabdfb99d268",
-    "internalRequestId":62913,
-    "status":"SUCCESS",
-    "errCode":0,
-    "reason":"",
-    "version":"1.0"
-} */
-
-
 
 enum BillingAddressModelError:Error{
     case invalidData()
@@ -66,6 +30,23 @@ struct BillingAddressModel {
         self.firstName = representation["firstName"] as? String
         self.lastName = representation["lastName"] as? String
         self.state = representation["state"] as? String
+    }
+    
+    init( city: String,
+          country: String,
+          zip:String,
+          email:String,
+          firstName:String,
+          lastName:String,
+          state:String ) {
+        
+        self.city = city
+        self.country = country
+        self.zip = zip
+        self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
+        self.state = state
     }
     
     public func asDictionary() throws -> [String:Any] {
@@ -116,6 +97,18 @@ struct CardDataModel {
         self.CVV = representation["CVV"] as? String
     }
     
+    init(cardNumber:String,
+         cardHolderName:String,
+         expirationMonth:String,
+         expirationYear:String,
+         CVV:String) {
+        self.cardNumber = cardNumber
+        self.cardHolderName = cardHolderName
+        self.expirationMonth = expirationMonth
+        self.expirationYear = expirationYear
+        self.CVV = CVV
+    }
+    
     public func asDictionary() throws -> [String:Any] {
         var result:[String:Any] = [:]
         
@@ -146,8 +139,6 @@ struct CardModel {
     public var environment:String?
     
     public var billingAddress:BillingAddressModel?
-
-    
     
     
     init?(representation:[String:Any]) {
@@ -162,15 +153,26 @@ struct CardModel {
         }
         self.sessionToken = sessionToken
         
-        guard let cardData = CardDataModel.init(representation: representation["cardData"] as! [String:Any] )  else {
+        if let cardDataModelRepresentation = representation["cardData"] as? CardDataModel {
+            self.cardData = cardDataModelRepresentation
+        } else if let cardDataJsonRepresentation = representation["cardData"] as? [String:Any] {
+            self.cardData = CardDataModel.init(representation: cardDataJsonRepresentation)
+        } else {
+            print("invalid card data")
             return
         }
-        self.cardData = cardData
         
         self.merchantSiteId = representation["merchantSiteId"] as? String
         self.environment = representation["environment"] as? String
-        self.billingAddress = BillingAddressModel.init(representation: representation["billingAddress"] as! [String:Any] )
         
+        if let billingAddressModelRepresentation = representation["billingAddress"] as? BillingAddressModel {
+            self.billingAddress = billingAddressModelRepresentation
+        } else if let billingAddressJsonRepresentation = representation["billingAddress"] as? [String:Any] {
+            self.billingAddress = BillingAddressModel.init(representation: billingAddressJsonRepresentation)
+        } else {
+            print("ivalid billing address data")
+            return
+        }
     }
     
 }
