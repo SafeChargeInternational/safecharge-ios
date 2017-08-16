@@ -59,32 +59,14 @@ class CreditCardTextField : UITextField {
     }
     @objc func textFieldEdited(aNotificaiton: NSNotification) {
         if self == aNotificaiton.object! as? CreditCardTextField {
-            //let (type,formatted,valid,complete,exactMatch) = CreditCardValidator.checkCardNumber(input: self.text!)
-            //let type = CreditCardValidator2.checkCardType(input: self.text!)
             let (type, exactMatch) = CreditCardValidator2.checkCardType(input: self.text!)
             
             let valid = CreditCardValidator.luhnCheck(number: self.text!)
-            let complete = false
-            //let exactMatch = false
             let formatted = CreditCardValidator.formatBy4(input: self.text!)
-            
-            print("****************************")
-            print(type)
-            print("****************************")
-            
-            if type == CreditCardValidator2.CardType.visa {
-                print("sd")
-            }
             
             if valid == false { //invalid card                
                 if type == CreditCardValidator2.CardType.none {
-                    if complete == false {
-                        self.creditCardDelegate?.onUnknownCard()
-                    } else {
-                        self.text = self.cutLastSymbol(str: self.text!)
-                        self.creditCardDelegate?.onInvalidCard()
-                        return
-                    }
+                    self.creditCardDelegate?.onUnknownCard()
                 }
                 else if type == CreditCardValidator2.CardType.visa {
                     if exactMatch {
@@ -144,7 +126,6 @@ class CreditCardTextField : UITextField {
 
             } else { //valid card
                 if type ==  CreditCardValidator2.CardType.none { //unknown
-                    //self.text = self.cutLastSymbol(str: formatted)
                     self.creditCardDelegate?.onUnknownCard()
                     return
                     

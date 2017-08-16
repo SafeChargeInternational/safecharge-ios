@@ -17,6 +17,12 @@ class SharedViewContext {
         return Static.instance
     }
     
+    //provide default values for some othe fields
+    init() {
+        self.cardHolderName = "change with cardholdername"
+        
+    }
+    
     
     
     public var sharedCardIcon:UIImageView? = nil
@@ -32,6 +38,6 @@ class SharedViewContext {
     
     public var cvv:String? = nil
     
-    
+    public var cardHolderName:String? = nil
 
 }

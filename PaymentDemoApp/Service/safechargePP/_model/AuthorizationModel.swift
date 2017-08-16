@@ -7,18 +7,6 @@
 //
 
 import Foundation
-/*
-{
-    "sessionToken": "9610a8f6-44cf-4c4f-976a-005da69a2a3b",
-    "merchantId": "7777777",
-    "merchantSiteId": "19",
-    "clientRequestId": "1484759782197",
-    "internalRequestId": "866",
-    "status": "SUCCESS",
-    "errCode": "0",
-    "reason": "",
-    "version": "1.0"
-} */
 
 struct AuthorizationResponseModel {
     

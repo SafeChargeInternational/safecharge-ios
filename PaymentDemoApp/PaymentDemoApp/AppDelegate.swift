@@ -20,8 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ServiceContext.init(enviorment: ServiceEnviorment.integration,
                             merchantId: "8912193623117089371",
                             merchantSiteId: "125823",
+                            userToken: "Test_0065",
                             clientRequestId: "111899",
-                            secretKey: "mY4QUnfnH2JO8cnSN6fm0aqRMsXOUDKu1Cx0im5eFzHOiGQ9WPbQaFopSgO1Vmp8")
+                            secretKey: "mY4QUnfnH2JO8cnSN6fm0aqRMsXOUDKu1Cx0im5eFzHOiGQ9WPbQaFopSgO1Vmp8"
+                            )
+        
+        
         
         return true
     }

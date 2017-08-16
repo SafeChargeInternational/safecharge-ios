@@ -63,6 +63,9 @@ struct AuthorizeResponse : ResponseObjectSerializable {
 enum CardTokenizationError:Error {
     case invalidResponse()
     case invalidCardNumber()
+    case invalidExpiredDate()
+    case invalidCCProcess()
+    
 }
 
 struct CardTokenizationResponse : ResponseObjectSerializable {
@@ -98,9 +101,15 @@ struct CardTokenizationResponse : ResponseObjectSerializable {
         
         if self.cardTokenziationData?.status != nil && self.cardTokenziationData?.status != "SUCCESS" {
             
-            //if
-            
-            result = CardTokenizationError.invalidResponse()
+            if self.cardTokenziationData?.reason == "Invalid expired date" {
+                result = CardTokenizationError.invalidExpiredDate()
+            } else if self.cardTokenziationData?.reason == "" {
+                result = CardTokenizationError.invalidCardNumber()
+            } else if self.cardTokenziationData?.reason == "Not allowed to process this CC company" {
+                result = CardTokenizationError.invalidCCProcess()
+            } else {
+                result = CardTokenizationError.invalidResponse()
+            }
         }
         
         return result

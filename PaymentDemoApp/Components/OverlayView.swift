@@ -27,12 +27,19 @@ class OverlayView : UIView {
                                                object: nil)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     private func setupLogo() {
-        self.logoView = UIImageView.init(frame: CGRect.init(x: self.frame.size.width - self.logoViewWidth, y: 100.0, width: self.logoViewWidth, height: self.logoViewHeight))
+        self.logoView = UIImageView.init(frame: CGRect.init(x: self.frame.size.width - self.logoViewWidth,
+                                                            y: 100.0,
+                                                            width: self.logoViewWidth,
+                                                            height: self.logoViewHeight))
         self.logoView?.image = UIImage.init(named: "sc-logo-white-transparent-128x20")
         self.logoView?.contentMode = .scaleAspectFit
         
